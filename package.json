@@ -1,0 +1,41 @@
+{
+  "name": "fetch",
+  "version": "1.0.0",
+  "description": "fetch as a service",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ./dev.js",
+    "start": "nodemon --delay 2 ./server.js",
+    "server": "node ./server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nick-ng/fetch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nick-ng/fetch/issues"
+  },
+  "homepage": "https://github.com/nick-ng/fetch#readme",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "husky": "^4.3.6",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
