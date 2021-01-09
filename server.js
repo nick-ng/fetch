@@ -10,7 +10,7 @@ const MS_PER = process.env.MS_PER
   : 1000;
 const MAX_REQUESTS = process.env.MAX_REQUESTS
   ? Math.min(parseInt(process.env.MAX_REQUESTS, 10), 100)
-  : 20;
+  : 50;
 const PORT = process.env.PORT || 23286;
 
 const limit = {
@@ -52,6 +52,8 @@ app.post("/", async (req, res, _next) => {
     const res2 = await fetch(url, options);
 
     if (!res2.ok) {
+      console.log("res2", res2);
+      console.log("text", await res2.text());
       res.sendStatus(res2.status);
     }
 
