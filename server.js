@@ -41,6 +41,10 @@ app.use(cors());
 
 app.post("/", async (req, res, _next) => {
   if (rateLimited()) {
+    res.set({
+      "access-control-expose-headers": "X-Ms-Per-Request",
+      "X-Ms-Per-Request": MS_PER,
+    });
     res.statusMessage = "Too many requests";
     res.status(400).end();
     return;
