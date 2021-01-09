@@ -39,9 +39,7 @@ app.use(compression());
 app.use(express.json());
 app.use(cors());
 
-const router = express.Router();
-
-router.post("/", async (req, res, _next) => {
+app.post("/", async (req, res, _next) => {
   if (rateLimited()) {
     res.statusMessage = "Too many requests";
     res.status(400).end();
@@ -70,8 +68,6 @@ router.post("/", async (req, res, _next) => {
     res.status(500).end();
   }
 });
-
-app.use(router);
 
 server.listen(PORT, () => {
   console.log(`${new Date()} Website server listening on ${PORT}.`);
