@@ -46,7 +46,7 @@ app.post("/", async (req, res, _next) => {
       "X-Ms-Per-Request": MS_PER,
     });
     res.statusMessage = "Too many requests";
-    res.status(400).end();
+    res.status(429).end();
     return;
   }
 
@@ -58,7 +58,8 @@ app.post("/", async (req, res, _next) => {
     if (!res2.ok) {
       console.log("res2", res2);
       console.log("text", await res2.text());
-      res.sendStatus(res2.status);
+      res.status(res2.status);
+      res.send(await res2.text());
     }
 
     const contentType = res2.headers.get("content-type");
