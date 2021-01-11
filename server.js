@@ -60,6 +60,7 @@ app.post("/", async (req, res, _next) => {
       console.log("text", await res2.text());
       res.status(res2.status);
       res.send(await res2.text());
+      return;
     }
 
     const contentType = res2.headers.get("content-type");
