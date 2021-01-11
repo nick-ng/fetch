@@ -56,10 +56,11 @@ app.post("/", async (req, res, _next) => {
     const res2 = await fetch(url, options);
 
     if (!res2.ok) {
+      const resText = await res2.text();
       console.log("res2", res2);
-      console.log("text", await res2.text());
+      console.log("text", resText);
       res.status(res2.status);
-      res.send(await res2.text());
+      res.send(resText);
       return;
     }
 
